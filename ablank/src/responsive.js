@@ -1,4 +1,5 @@
-import React,{Suspense} from 'react'
+import React from 'react'
+import {compoi, multi} from './appRoutes'
 
 const styles={
   container:{
@@ -8,7 +9,7 @@ const styles={
   },
 }
 
-export default function responsive(multi,panes,slashpath, compoi){
+export default function responsive(panes,slashpath){
   let path = slashpath.substr(1)
   if(!multi[path]){
     path = multi.default
@@ -34,12 +35,8 @@ export default function responsive(multi,panes,slashpath, compoi){
     return React.createElement(compoi[n], {key:i}, null)
   })
   return(
-    // <Suspense fallback={<div>Loading...</div>}>
     <div style ={styles.container} >
       {pages}
     </div>    
-
-    // </Suspense>
   )
-  // return pgArr
 }

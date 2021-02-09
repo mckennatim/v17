@@ -1,109 +1,26 @@
 import React,{Suspense, useContext, useEffect, useState, lazy} from 'react';
 import {AProvider, AContext} from '../contexts/acontext'
-const compoi = {}
-compoi['Help'] = React.lazy(() => import('./Help.jsx'));
-compoi['Jobs'] = React.lazy(() => import('./Jobs.jsx'));
-compoi['AddJob'] = React.lazy(() => import('./AddJob.jsx'));
 import responsive from '../responsive'
 
-
-
-
-const multi={
-  default: 'jobs',
-  jobs: [
-    ['Jobs'],
-    ['Jobs', 'Help'],
-    ['Jobs', 'AddJob', 'Help']
-  ],
-  addjob:[
-    ['AddJob'],
-    ['AddJob', 'Jobs'],
-    ['AddJob', 'Jobs', 'Help'],
-  ],
-  help:[
-    ['Help'],
-  ]
-}
-
-
-let sb = []
-let sd=[]
-
-const nextBest =(arr, panes)=>{
-  const sa= arr.filter((a)=>a.length == panes)
-  console.log('sa: ', sa, sa.length)
-  if(sa.length>0) {
-    console.log('sa: ', sa)
-    sd = sa
-    return sa
-  } else {
-    console.log('arr,panes-1: ', arr,panes-1)
-    nextBest(arr, panes-1)
-  }
-}
-
-nextBest(multi['help'], 3)
-console.log(sd)
-
-const rert = (ar) => {
-  const pgs = ar.map((a,i)=>{
-    return React.createElement(compoi[a], {key:i}, null)
-  })
-  return pgs
-}
-
-console.log('rert(sd): ', rert(sd[0]))
-
-const renderRWPrtX = (multi, panes, path)=>{
-  let key = Object
-  .keys(multi)
-  .filter((k)=>path==`/${k}`)
-  if( key.length ==0){key=multi.default}
-  const pages =multi[key]
-  .filter((m)=>m.length==panes)[0]
-  .map((n,i)=>{
-    return React.createElement(compoi[n], {key:i}, null)
-  })
-  return(
-    <div style ={styles.container} >
-      {pages}
-    </div>    
-  )
-}
-
-
-const renderRWPrt = (multi, panes, path)=>{
-  let key = Object
-  .keys(multi)
-  .filter((k)=>path==`/${k}`)
-  if( key.length ==0){key=multi.default}
-  // let sd=[]
-  nextBest(multi[key], 3)
-  console.log('sd: ', sd)
-  // .filter((m)=>m.length==panes)[0]
-  // .map((n,i)=>{
-  //   return React.createElement(compoi[n], {key:i}, null)
-  // })
-  // return(
-  //   <div style ={styles.container} >
-  //     {pages}
-  //   </div>    
-  // )
-}
-
-//renderRWPrt(multi, 3, 'help')
-
-
-// const renderHelp = ()=>{
-//   return React.createElement(compoi['Help'], {key:1}, null)
+// const multi={
+//   default: 'jobs',
+//   jobs: [
+//     ['Jobs'],
+//     ['Jobs', 'Help'],
+//     ['Jobs', 'AddJob', 'Help']
+//   ],
+//   addjob:[
+//     ['AddJob'],
+//     ['AddJob', 'Jobs'],
+//     ['AddJob', 'Jobs', 'Help'],
+//   ],
+//   help:[
+//     ['Help'],
+//   ]
 // }
-
-
 
 export const App=(props)=> {
   const {dev}=props
-  // const[page, setPage] = useState()
   const{title}=props
 
   return (
@@ -121,7 +38,6 @@ const Ctrl=(props)=>{
   const{title}=props
   const{devInfo, page, handlePage} = useContext(AContext)
   const{pane}=devInfo
-
 
   const renderNav = ()=>{
     return(
@@ -142,52 +58,10 @@ const Ctrl=(props)=>{
     )
   }
 
-  
-
-  // renderRWPrt(multi, devInfo.panes, page)
-
-  // const renderContent=()=>{
-  //   console.log('page: ', page)
-  //   if (page=='/addjob'){
-  //     return(
-  //       <div style ={styles.container}>
-  //         <AddJob/>
-  //       </div>
-  //     )
-  //   }
-  //   if (page=='/jobs' || page==undefined){
-  //     console.log('default is /jobs')
-  //     return(
-  //       <div style ={styles.container} >
-  //         <Jobs/>
-  //         <Help/>
-  //       </div>
-  //     )
-  //   }
-  //   if (page=='/both'){
-  //     return(
-  //       <div style ={styles.container}>
-  //         <Jobs/>
-  //         <AddJob/>
-  //         <Help/>
-  //       </div>
-  //     )
-  //   }
-  // }
-
-  // const pgArr = responsive(multi,devInfo.panes,'help')
-  // console.log('pgArr: ', pgArr)
-
-
   return(
   <div> 
     {renderNav()}
-    {responsive(multi,devInfo.panes,page, compoi)}
-
-    {/* <Suspense fallback={<div>Loading...</div>}>   */}
-      {/* {rert(sd[0])} */}
-      {/* {renderRWPrtX(multi, devInfo.panes, page)} */}
-    {/* </Suspense> */}
+    {responsive(devInfo.panes,page)}
   </div>    
   )
 }
