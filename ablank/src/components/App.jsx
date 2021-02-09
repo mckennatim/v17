@@ -4,12 +4,13 @@ const compoi = {}
 compoi['Help'] = React.lazy(() => import('./Help.jsx'));
 compoi['Jobs'] = React.lazy(() => import('./Jobs.jsx'));
 compoi['AddJob'] = React.lazy(() => import('./AddJob.jsx'));
-
+import responsive from '../responsive'
 
 
 
 
 const multi={
+  default: 'jobs',
   jobs: [
     ['Jobs'],
     ['Jobs', 'Help'],
@@ -19,20 +20,52 @@ const multi={
     ['AddJob'],
     ['AddJob', 'Jobs'],
     ['AddJob', 'Jobs', 'Help'],
+  ],
+  help:[
+    ['Help'],
+    ['Jobs', 'Help']
   ]
 }
 
 
-const renderRWPrt = (multi, panes, path)=>{
-  const key = Object
+let sb = []
+let sd=[]
+
+const nextBest =(arr, panes)=>{
+  const sa= arr.filter((a)=>a.length == panes)
+  console.log('sa: ', sa, sa.length)
+  if(sa.length>0) {
+    console.log('sa: ', sa)
+    sd = sa
+    return sa
+  } else {
+    console.log('arr,panes-1: ', arr,panes-1)
+    nextBest(arr, panes-1)
+  }
+}
+
+nextBest(multi['help'], 3)
+console.log(sd)
+
+const rert = (ar) => {
+  const pgs = ar.map((a,i)=>{
+    return React.createElement(compoi[a], {key:i}, null)
+  })
+  return pgs
+}
+
+console.log('rert(sd): ', rert(sd[0]))
+
+const renderRWPrtX = (multi, panes, path)=>{
+  let key = Object
   .keys(multi)
   .filter((k)=>path==`/${k}`)
+  if( key.length ==0){key=multi.default}
   const pages =multi[key]
   .filter((m)=>m.length==panes)[0]
   .map((n,i)=>{
     return React.createElement(compoi[n], {key:i}, null)
   })
-  console.log('pages: ', pages)
   return(
     <div style ={styles.container} >
       {pages}
@@ -40,6 +73,27 @@ const renderRWPrt = (multi, panes, path)=>{
   )
 }
 
+
+const renderRWPrt = (multi, panes, path)=>{
+  let key = Object
+  .keys(multi)
+  .filter((k)=>path==`/${k}`)
+  if( key.length ==0){key=multi.default}
+  // let sd=[]
+  nextBest(multi[key], 3)
+  console.log('sd: ', sd)
+  // .filter((m)=>m.length==panes)[0]
+  // .map((n,i)=>{
+  //   return React.createElement(compoi[n], {key:i}, null)
+  // })
+  // return(
+  //   <div style ={styles.container} >
+  //     {pages}
+  //   </div>    
+  // )
+}
+
+//renderRWPrt(multi, 3, 'help')
 
 
 // const renderHelp = ()=>{
@@ -50,8 +104,6 @@ const renderRWPrt = (multi, panes, path)=>{
 
 export const App=(props)=> {
   const {dev}=props
-  console.log('APP RUN')
-  console.log('window.location.hash: ', window.location.hash)
   // const[page, setPage] = useState()
   const{title}=props
 
@@ -67,12 +119,9 @@ export const App=(props)=> {
 }
 
 const Ctrl=(props)=>{
-  console.log('CTRL RUN')
-  console.log('window.location.hash: ', window.location.hash)
   const{title}=props
   const{devInfo, page, handlePage} = useContext(AContext)
   const{pane}=devInfo
-  console.log('page: ', page)
 
 
   const renderNav = ()=>{
@@ -133,7 +182,9 @@ const Ctrl=(props)=>{
   <div> 
     {renderNav()}
     <Suspense fallback={<div>Loading...</div>}>  
-      {renderRWPrt(multi, devInfo.panes, page)}
+      {/* {rert(sd[0])} */}
+      {renderRWPrtX(multi, devInfo.panes, page)}
+      {/* {responsive(multi,devInfo.panes,page.substr(1),compoi)} */}
     </Suspense>
   </div>    
   )
