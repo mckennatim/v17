@@ -1,11 +1,18 @@
-import React from 'react'
+import React,{Suspense} from 'react'
 
-export default function responsive(multi,panes,path,compoi){
-  console.log('multi: ', multi)
-  console.log('panes: ', panes)
-  console.log('path: ', path)
-  console.log('compoi: ', compoi)
-  console.log('multi[path]: ', multi[path])
+const styles={
+  container:{
+    display: 'grid',
+    gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))',
+    backgroundColor: '#ece6ed'
+  },
+}
+
+export default function responsive(multi,panes,slashpath, compoi){
+  let path = slashpath.substr(1)
+  if(!multi[path]){
+    path = multi.default
+  }
   let pgArr =[]
 
   const nextBest =(arr, panes)=>{
@@ -21,14 +28,18 @@ export default function responsive(multi,panes,path,compoi){
     }
   }
   nextBest(multi[path], panes)
+  console.log('pgArr: ', pgArr[0])
 
-  const renderPages = (ar) => {
-    const pgs = ar.map((a,i)=>{
-      return React.createElement(compoi[a], {key:i}, null)
-    })
-    return pgs
-  }
+  const pages = pgArr[0].map((n,i)=>{
+    return React.createElement(compoi[n], {key:i}, null)
+  })
+  return(
+    // <Suspense fallback={<div>Loading...</div>}>
+    <div style ={styles.container} >
+      {pages}
+    </div>    
 
-  const pages = renderPages(pgArr)
-  return pages
+    // </Suspense>
+  )
+  // return pgArr
 }

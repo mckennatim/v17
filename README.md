@@ -93,3 +93,6 @@ Combines most of the important elements needed for prototype app. This app is re
       ]
     }
 
+### 2/9/21 10ablank-milestone-lazy-responsive_v2
+It seems that React.lazy has to be in the file that uses it
+

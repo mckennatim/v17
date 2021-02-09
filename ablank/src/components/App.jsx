@@ -23,7 +23,6 @@ const multi={
   ],
   help:[
     ['Help'],
-    ['Jobs', 'Help']
   ]
 }
 
@@ -135,9 +134,9 @@ const Ctrl=(props)=>{
         <li style ={styles.nav.li}>
           <a onClick={handlePage('/addjob')}>addjob</a>
         </li>
-        {/* <li style ={styles.nav.li}>
+        <li style ={styles.nav.li}>
           <a onClick={handlePage('/help')}>help</a>
-        </li> */}
+        </li>
       </ul>
     </nav>
     )
@@ -176,16 +175,19 @@ const Ctrl=(props)=>{
   //   }
   // }
 
+  // const pgArr = responsive(multi,devInfo.panes,'help')
+  // console.log('pgArr: ', pgArr)
 
 
   return(
   <div> 
     {renderNav()}
-    <Suspense fallback={<div>Loading...</div>}>  
+    {responsive(multi,devInfo.panes,page, compoi)}
+
+    {/* <Suspense fallback={<div>Loading...</div>}>   */}
       {/* {rert(sd[0])} */}
-      {renderRWPrtX(multi, devInfo.panes, page)}
-      {/* {responsive(multi,devInfo.panes,page.substr(1),compoi)} */}
-    </Suspense>
+      {/* {renderRWPrtX(multi, devInfo.panes, page)} */}
+    {/* </Suspense> */}
   </div>    
   )
 }
