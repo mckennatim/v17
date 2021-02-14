@@ -1,4 +1,9 @@
 # tcard-jobs
+radical redesign, no router rxjs
+
+ foundJobs and 
+
+
 ###  nav and control
 nav: jobs, addjobs and help
 
@@ -216,3 +221,7 @@ pay goes berserk Thinking in a loop if the tax rates for the new year are not in
 ## log
 ### 1/27/21 dateinfo is fucked, firstday is in props but doesn't show up
 NavCtrl gets the settings so it is undefined until the settings arrive
+
+### 2/13/21 11tcard-jobs_lazy-rep-hash
+#### using context
+job2edit (a string) is shared by Jobs and AddJobs. Addjobs shares (and replaces) foundJobs array once it is done editing (Update). 

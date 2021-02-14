@@ -95,7 +95,11 @@ Combines most of the important elements needed for prototype app. This app is re
 
 ### 2/9/21 10ablank-milestone-lazy-responsive_v2
 <s>It seems that React.lazy has to be in the file that uses it</s>
-### 2/9/21 10ablank-milestone-lazy-responsive_v3-reorg
-The changeable stuff for the app is in appRoutes. 
+
+### 2/9/21 11ablank-milestone-lazy-responsive_v3-reorg
+The changeable stuff for the app is in appRoutes. How do you use mutiple contexts? Add hel next?
+
+### 2/12/21 s2g 
+installed but now working, problem with soath local 7080
 
 

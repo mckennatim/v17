@@ -6,46 +6,28 @@ const aInitState = {
   job2edit:'',
   foundJobs:[],
   dev:{},
-  page:''
+  path:''
 }
-
-
 
 export const AContext = createContext(aInitState)
 
-
-
+/* app specific actions*/
 export const AReducer= (state,action)=>{
   switch(action.type){
     case 'sETjOB2eDIT':
       return{...state, job2edit:action.payload}
     case 'sETfOUNDjOBS':
       return {...state, foundJobs:action.payload}
-    case 'sETdEV' :
-      let ws = window.innerWidth
-      let idx
-      const types= [
-        {dev:'watch', panes:1}, 
-        {dev:'phone', panes:1}, 
-        {dev:'phonel', panes:2}, 
-        {dev:'tablet', panes:2}, 
-        {dev:'tabletL', panes:3}, 
-        {dev:'laptop', panes:3}, 
-        {dev:'monitor', panes:4} 
-      ]
-      const sizes= [300, 500, 600, 800, 900, 1800, 3000]
-      sizes.reduce((prev, curr, i)=>{ 
-        if(prev < ws && ws <= curr){idx = i}
-        return curr 
-      }, 0);
-      return {...state, dev:types[idx]
-  }}
+  }
 }
 
 export const AProvider = ({children})=>{
+  /* dispatcher to context of app specific state change*/
   const [state, dispatch] = useReducer(AReducer, aInitState)
+
+  /*general router and responsive code */
   const [devInfo,setDevInfo] =useState(getDevInfo())
-  const[page, setPage] = useState(window.location.hash.substr(1))
+  const[path, setPath] = useState(window.location.hash.substr(1))
 
   function getDevInfo (){
     let ws = window.innerWidth
@@ -67,22 +49,22 @@ export const AProvider = ({children})=>{
     return types[idx]
   }
 
-  const handlePage=(p)=>()=>{
-    console.log('p: ', p)
-    history.push(p)
-    setPage(p)
-  }
-
   window.onresize=()=>{
     if(getDevInfo().panes != devInfo.panes){
       setDevInfo(getDevInfo())
     }
   }
+  
   window.onhashchange = ()=>{
-    console.log('window.location.hash: ', window.location.hash)
-    setPage(window.location.hash.substr(1))
+    setPath(window.location.hash.substr(1))
+  }
+  
+  const handlePath=(p)=>()=>{
+    history.push(p)
+    setPath(p)
   }
 
+  /*app specific dispatch code for objects and functions in context */
   function setJob2edit(job2edit) {
     dispatch({
         type: 'sETjOB2eDIT',
@@ -99,11 +81,11 @@ export const AProvider = ({children})=>{
 
   return(
     <AContext.Provider value={{
+      devInfo:devInfo,
+      path:path,
+      handlePath,
       foundJobs: state.foundJobs,
       job2edit: state.job2edit,
-      devInfo:devInfo,
-      page:page,
-      handlePage,
       setFoundJobs,
       setJob2edit
     }}>

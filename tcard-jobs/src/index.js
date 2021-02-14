@@ -1,14 +1,10 @@
-/*webpack 5 with react */
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {HashRouter as Router} from 'react-router-dom';
-import {NavCtrl} from './components/NavCtrl.jsx'
+import {App} from './components/App.js'
  
-const title = 'timecards - jobs app';
+const title = 'Timecards - Jobs';
 
 ReactDOM.render(
-  <Router>
-    <NavCtrl title={title}/>
-  </Router>,
+  <App title={title} />,
   document.getElementById('app')
 );
