@@ -5,3 +5,5 @@ jspm_package
 env.json
 *.mp4
 main.*
+dist/
+prod/
