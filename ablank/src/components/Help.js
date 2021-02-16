@@ -1,8 +1,12 @@
-import React from 'react'
+import React,{useContext} from 'react'
+import {AContext} from '../contexts/acontext'
 
 export default function Help(){
+  const {visiblePages} = useContext(AContext)
   return(
+    
     <div style ={styles.help.div0}>
+      {visiblePages.map((p,i)=>(<div key={i}>{p}</div>))}
       <span>
       Shares of GameStop — the company at the center of an online buying binge that captured the imagination of the world last week — crashed another 42 percent on Thursday, leaving it at a small fraction of the value it held just a few days ago.
 

@@ -3,6 +3,8 @@ import {fetchSettings} from '../fetches'
 import ResponsivePages from  './ResponsivePages.js'
 import {AContext} from '../contexts/acontext'
 
+const appid ='jobs'
+
 function NavCtrl(props) {
   const{title}=props
   const{devInfo, handlePath} = useContext(AContext)
@@ -43,7 +45,7 @@ function NavCtrl(props) {
   return (
     <div>
       {renderNav()}
-      <ResponsivePages/>
+      <ResponsivePages appid={appid}/>
     </div>
   );
 }

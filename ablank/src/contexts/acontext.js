@@ -27,6 +27,7 @@ export const AProvider = ({children})=>{
 
   /*general router and responsive code */
   const [devInfo,setDevInfo] =useState(getDevInfo())
+  const [visiblePages, setVisiblePages] = useState([])
   const[path, setPath] = useState(window.location.hash.substr(1))
 
   function getDevInfo (){
@@ -64,6 +65,8 @@ export const AProvider = ({children})=>{
     setPath(p)
   }
 
+  
+
   /*app specific dispatch code for objects and functions in context */
   function setJob2edit(job2edit) {
     dispatch({
@@ -84,6 +87,8 @@ export const AProvider = ({children})=>{
       devInfo:devInfo,
       path:path,
       handlePath,
+      visiblePages,
+      setVisiblePages,
       foundJobs: state.foundJobs,
       job2edit: state.job2edit,
       setFoundJobs,

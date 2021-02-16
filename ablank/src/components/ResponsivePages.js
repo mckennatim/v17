@@ -1,4 +1,4 @@
-import React, {useContext} from 'react'
+import React, {useContext, useEffect} from 'react'
 import {compoi, multi} from '../responsiveRoutes'
 import {AContext} from '../contexts/acontext'
 
@@ -11,31 +11,38 @@ const styles={
 }
 
 export default function ResponsivePages(){
-  const{devInfo, path} = useContext(AContext)
+  const{devInfo, path, visiblePages, setVisiblePages} = useContext(AContext)
   const {panes} = devInfo
-  let noSlPath = path.substr(1)
-  if(!multi[noSlPath]){
-    noSlPath = multi.default
-  }
-  let pgArr =[]
 
-  const nextBest =(arr, panes)=>{
-    const sa= arr.filter((a)=>a.length == panes)
-    if(sa.length>0) {
-      pgArr = sa
-      return sa
-    } else {
-      nextBest(arr, panes-1)
+  useEffect(()=>{
+    let noSlPath = path.substr(1)
+    if(!multi[noSlPath]){
+      noSlPath = multi.default
     }
-  }
-  nextBest(multi[noSlPath], panes)
+    let pgArr =[]
+  
+    const nextBest =(arr, panes)=>{
+      const sa= arr.filter((a)=>a.length == panes)
+      if(sa.length>0) {
+        pgArr = sa
+        return sa
+      } else {
+        nextBest(arr, panes-1)
+      }
+    }
+  
+    nextBest(multi[noSlPath], panes)
+    setVisiblePages(pgArr[0])
+  },[panes, path])
 
-  const pages = pgArr[0].map((n,i)=>{
+
+  const renderPages = visiblePages.map((n,i)=>{
     return React.createElement(compoi[n], {key:i}, null)
   })
+
   return(
     <div style ={styles.container} >
-      {pages}
+      {renderPages}
     </div>    
   )
 }

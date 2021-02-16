@@ -9,16 +9,13 @@
   "author": "Timothy S. McKenna <mckenna.tim@gmail.com>",
   "license": "MIT",
   "dependencies": {
-    "axios": "^0.21.1",
+    "@material-ui/core": "^4.11.3",
+    "@material-ui/styles": "^4.11.3",
     "css-loader": "^5.0.2",
     "history": "^5.0.0",
     "muicss": "^0.10.2",
-    "navigo": "^8.8.9",
     "react": "^17.0.1",
-    "react-dom": "^17.0.1",
-    "react-router-dom": "^6.0.0-beta.0",
-    "rxjs": "^6.6.3",
-    "socket.io-client": "^3.1.1"
+    "react-dom": "^17.0.1"
   },
   "devDependencies": {
     "@babel/core": "^7.12.10",

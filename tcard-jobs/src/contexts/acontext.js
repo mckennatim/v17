@@ -28,7 +28,9 @@ export const AProvider = ({children})=>{
 
   /*general router and responsive code */
   const [devInfo,setDevInfo] =useState(getDevInfo())
+  const [visiblePages, setVisiblePages] = useState([])
   const[path, setPath] = useState(window.location.hash.substr(1))
+  const [appid,setAppid] =useState('')
 
   function getDevInfo (){
     let ws = window.innerWidth
@@ -85,6 +87,10 @@ export const AProvider = ({children})=>{
       devInfo:devInfo,
       path:path,
       handlePath,
+      visiblePages,
+      setVisiblePages,
+      appid,
+      setAppid,
       foundJobs: state.foundJobs,
       job2edit: state.job2edit,
       setFoundJobs,

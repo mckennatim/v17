@@ -102,4 +102,14 @@ The changeable stuff for the app is in appRoutes. How do you use mutiple context
 ### 2/12/21 s2g 
 installed but now working, problem with soath local 7080
 
+### 2/16/21
+
+reorg of help
+
+Help.jsx: just gets alljobs and indents answeres into help which gets displayed
+
+HelpApp.js: changes help as needed. Toggle of answer/editing display. Also toggle edit/display for each question and answer. listen to text area. post on submit.
+
+state: help, toggle array, 
+
 
