@@ -1,18 +1,17 @@
 import React, {useContext, useEffect} from 'react'
-import {compoi, multi, appid} from '../responsiveRoutes'
+import {compoi, multi} from '../responsiveRoutes'
 import {AContext} from '../contexts/acontext'
 
 const styles={
   container:{
     display: 'grid',
     gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))',
-    backgroundColor: '#99CCFF'
+    backgroundColor: '#ece6ed'
   },
 }
 
 export default function ResponsivePages(){
-  const{devInfo, path,  visiblePages, setVisiblePages, setAppid} = useContext(AContext)
-  setAppid(appid)
+  const{devInfo, path, visiblePages, setVisiblePages} = useContext(AContext)
   const {panes} = devInfo
 
   useEffect(()=>{

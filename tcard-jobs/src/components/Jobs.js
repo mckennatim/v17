@@ -2,6 +2,9 @@ import React,{useState, useEffect, useReducer, useContext} from 'react'
 import {getDateInfo, getDateOfWeek} from '../utilities/wfuncs'
 import {fetchJobs4week, postJobs, fetchAllJobs} from '../fetches'
 import {AContext} from '../contexts/acontext'
+import {ls} from '../utilities/getCfg'
+console.log('dogs for frog')
+console.log('ls: ', ls)
 
 const Jobs =({firstday})=>{
    
@@ -41,6 +44,7 @@ const Jobs =({firstday})=>{
   const getAllJobs=()=>{
     fetchAllJobs()
     .then((res)=>{
+      console.log('res: ', res)
       setAllJobs(res.jobs)
     })
   }
@@ -50,6 +54,7 @@ const Jobs =({firstday})=>{
     dispatchDateInfo({ type: 'changeDateStr', payload: nv })
     fetchJobs4week(wk, yr)
       .then((res) => {
+        console.log('res: ', res)
         const ajobs = res.jobs.map((a)=>{
           a.active=1
           return a
@@ -205,12 +210,27 @@ const Jobs =({firstday})=>{
     )
   }
 
+  const render =()=>{
+    if(!ls.itemStr){
+      return(
+        <div>register</div>
+      )
+    }else{
+      return(
+      <div>
+        {renderHeader()}
+        {renderJobs4week()}
+        {renderSearched()}
+      </div>
+      )
+    }
+
+  }
+
   return(
     <div>
-      {renderHeader()}
-      {renderJobs4week()}
-      {renderSearched()}
-    </div>
+      {render()}
+    </div> 
   )
 }
 

@@ -2,6 +2,7 @@ import React,{useState, useEffect, useContext} from 'react';
 import {fetchSettings} from '../fetches'
 import ResponsivePages from  './ResponsivePages.js'
 import {AContext} from '../contexts/acontext'
+import {makeHref} from '../utilities/getCfg'
 
 const appid ='jobs'
 
@@ -9,6 +10,10 @@ function NavCtrl(props) {
   const{title}=props
   const{devInfo, handlePath} = useContext(AContext)
   const{panes}=devInfo
+
+  const host =window.location.hostname
+  const href = makeHref(host, 'signup', '#urapps')
+  const tcardhref = makeHref(host, 'tcard', '#tcard')
 
   const[, settings]= useState({})
   
@@ -28,14 +33,16 @@ function NavCtrl(props) {
       <nav style ={styles.nav.nav}>
         <span> {title} {devInfo.dev} {panes} </span>
         <ul style ={styles.nav.ul}>
-          <li style ={styles.nav.li}>
-            <a onClick={handlePath('/jobs')}>jobs</a>
+          <li style={styles.li}><a style={styles.a} href={href}>apps</a></li>
+          <li style={styles.li}><a style={styles.a} href={tcardhref}>tcard</a></li>
+          <li style ={styles.li}>
+            <a style={styles.a} onClick={handlePath('/jobs')}>jobs</a>
           </li>
-          <li style ={styles.nav.li}>
-            <a onClick={handlePath('/addjob')}>addjob</a>
+          <li style ={styles.li}>
+            <a style={styles.a} onClick={handlePath('/addjob')}>addjob</a>
           </li>
-          <li style ={styles.nav.li}>
-            <a onClick={handlePath('/help')}>help</a>
+          <li style ={styles.li}>
+            <a style={styles.a} onClick={handlePath('/help')}>help</a>
           </li>
         </ul>
       </nav>
@@ -52,6 +59,16 @@ function NavCtrl(props) {
 export{NavCtrl}
 
 const styles ={
+  li:{
+    display: 'inline',
+    padding: '2px',
+    paddingRight: '4px',
+    background: 'whitesmoke'
+  },
+  a:{
+    textDecoration: 'none',
+    color: 'green'    
+  },
   nav: {
     ul:{
       textAlign: 'left',

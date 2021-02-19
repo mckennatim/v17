@@ -1,7 +1,32 @@
 # tcard-jobs
+
+
+
 radical redesign, no router rxjs
 
- foundJobs and 
+## code features
+
+### nextBest recursive function
+Takes an array of arrays `arr` of page names from that determine which pagesnames will be included in the visiblePages array. If there is a subarray of the same length as panes its done and exits. If not it recurses seeing there is a match with one less pane.
+
+    const panes =2
+
+    const arr = [
+      ['AddJob'],
+      ['AddJob'],
+      ['AddJob', 'Jobs', 'Help'],
+    ],
+
+    let pgArr=[]
+    const nextBest =(arr, panes)=>{
+      const sa= arr.filter((a)=>a.length == panes)
+      if(sa.length>0) {
+        pgArr = sa
+        return sa
+      } else {
+        nextBest(arr, panes-1)
+      }
+    }
 
 
 ###  nav and control
@@ -227,3 +252,27 @@ NavCtrl gets the settings so it is undefined until the settings arrive
 job2edit (a string) is shared by Jobs and AddJobs. Addjobs shares (and replaces) foundJobs array once it is done editing (Update). 
 
 ### 2/16/21 12tcard-jobs_help_rewrite
+muicss accordian maybe should use https://jsfiddle.net/muicss/v5ytxft0/
+
+### 2/18/21 sbsCreatApp
+
+1. copy one you like
+2. in `package.json` change appdir twice to the new app dir. (modify its name and descr too) 
+3. add the app to db.timecards.roleapp for whichever roles can access it
+4. modify `responsiveRoutes.js` for pages in app
+5. modify `NavCtl` for links and appid
+6. modify `denv.json` for appid
+
+{"email":"mckenna.tim@gmail.com","firstday":5,"token":"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJjb2lkIjoicmVyb28iLCJyb2xlIjoicGFydG5lciIsImFwcGlkIjoic2lnbnVwIiwiZW1haWxpZCI6Im1ja2VubmEudGltQGdtYWlsLmNvbSIsImV4cCI6MTYxNzEyMzk5MzI2N30._Fo1aglhOI5vZmX9leUsw_rV-iLxwbBL4-HB7LFCH3U"}
+
+"in get /persons/connect/ (not authorized)-user not authorized for this app co. not active"
+
+email: "mckenna.tim@gmail.com"
+
+firstday: 5
+
+
+token: "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJjb2lkIjoicmVyb28iLCJyb2xlIjoicGFydG5lciIsImFwcGlkIjoic2lnbnVwIiwiZW1haWxpZCI6Im1ja2VubmEudGltQGdtYWlsLmNvbSIsImV4cCI6MTYxNzEyMzk5MzI2N30._Fo1aglhOI5vZmX9leUsw_rV-iLxwbBL4-HB7LFCH3U"
+
+### 2/19/21 13 deploy_tcard-connect_tcard-jobs_modify_spa1_signup
+

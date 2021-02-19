@@ -10,7 +10,7 @@ export default function Help(){
   const [, setAllhelp] = useState([])
 
   useEffect(()=>{
-    fetchHelp(appid)
+    fetchHelp('connect')
     .then((res)=>{
       console.log('res: ', res)
       setAllhelp(res.results)
@@ -116,10 +116,16 @@ export default function Help(){
   }
 
   return(
-    <div>
+    <div style={styles.out}>
       {render()}
     </div>
   )
+}
+
+const styles={
+  out:{
+    background: "#99CCFF"
+  }
 }
 
 // const styles ={

@@ -10,7 +10,7 @@ export default function Help(){
   const [, setAllhelp] = useState([])
 
   useEffect(()=>{
-    fetchHelp(appid)
+    fetchHelp('connect')
     .then((res)=>{
       console.log('res: ', res)
       setAllhelp(res.results)

@@ -1,18 +1,18 @@
 import React,{useEffect, useReducer, useContext} from 'react'
 import {fetchJob, postJob} from '../fetches'
-import Form from 'muicss/lib/react/form';// eslint-disable-line 
+// import Form from 'muicss/lib/react/form';// eslint-disable-line 
 import Input from 'muicss/lib/react/input';// eslint-disable-line 
 import Button from 'muicss/lib/react/button';
 import Checkbox from 'muicss/lib/react/checkbox';
 // import {Jobs}from './Jobs'
 import {AContext} from '../contexts/acontext'
+import {ls} from '../utilities/getCfg'
 
 const blajob = {job:'', categories:'[]', hrs:null, labor:null,archived:0,default:0, defcat:0, jobwoCat:1}
 
 export default function AddJob (){
-  const{job2edit, foundJobs, setFoundJobs} = useContext(AContext)
+  const{job2edit, setJob2edit, foundJobs, setFoundJobs} = useContext(AContext)
   const [beingEdited, dispatchBeingEdited]=useReducer(beingEditedReducer, blajob)
-
   
 
   const updateJob =()=>{
@@ -23,6 +23,8 @@ export default function AddJob (){
       setFoundJobs(retJobs)
       console.log('retJobs, foundJobs: ', retJobs, foundJobs)
       saveJob()
+      setJob2edit('')
+      dispatchBeingEdited({type:'replace', payload:blajob})
     }
   }
 
@@ -175,9 +177,21 @@ export default function AddJob (){
     )
   }
 
+  const render =()=>{
+    if(!ls.itemStr){
+      return(
+        <div>register</div>
+      )
+    }else{
+      return(
+        <div>{renderForm()}</div>
+      )
+    }
+  }
+
   return(
-    <div style={style.outer}>
-      {renderForm()}
+    <div> 
+    {render()} 
     </div>
   )
 }
@@ -190,6 +204,7 @@ const beingEditedReducer=(state,action)=>{
   console.log('action: ', action)
   switch (action.type){
     case 'replace':
+      console.log('action.payload: ', action.payload)
       return action.payload
     case 'changeJob':
       return {...state, job:action.payload}
@@ -256,50 +271,50 @@ const isCkCat =(arr)=>{
   return f.length>0
 }
 
-const style = {
-  outer:{
-    overflow:'hidden',
-    margin: '2px 10px 10px 10px',
-    padding: '4px',
-    background: '#99CCFF'
-  },
-  info:{
-    div:{
-      float:'right',
-      textAlign:'right'
-    },
-    span:{
-      fontSize: '200%',
-      color: 'orange'
-    }
-  },
-  myli :{
-    od:{
-      overflow:'hidden',
-      width: '100%',
-      border: '1px solid #ccc'
-    },
-    ul:{
-      textAlign: 'left',
-      listStyleType: 'none',
-      paddingLeft: '12px'
-    },
-    li:{
-      background: '#99CCCC',
-      padding: '6px',
-      overflow: 'hidden',
-      border: 'solid 1px black'
-    },
-    idx:{
-      float: 'left',
-      width: '7%',
-      padding: '5px'
-    },
-    icon:{
-      fontSize: '18px'
-    },
-  }
-}
+// const style = {
+//   outer:{
+//     overflow:'hidden',
+//     margin: '2px 10px 10px 10px',
+//     padding: '4px',
+//     background: '#99CCFF'
+//   },
+//   info:{
+//     div:{
+//       float:'right',
+//       textAlign:'right'
+//     },
+//     span:{
+//       fontSize: '200%',
+//       color: 'orange'
+//     }
+//   },
+//   myli :{
+//     od:{
+//       overflow:'hidden',
+//       width: '100%',
+//       border: '1px solid #ccc'
+//     },
+//     ul:{
+//       textAlign: 'left',
+//       listStyleType: 'none',
+//       paddingLeft: '12px'
+//     },
+//     li:{
+//       background: '#99CCCC',
+//       padding: '6px',
+//       overflow: 'hidden',
+//       border: 'solid 1px black'
+//     },
+//     idx:{
+//       float: 'left',
+//       width: '7%',
+//       padding: '5px'
+//     },
+//     icon:{
+//       fontSize: '18px'
+//     },
+//   }
+// }
 
   // const expandCats=(ajob)=>{
   //   const cats = ajob.categories.split(',')

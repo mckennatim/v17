@@ -16,7 +16,7 @@ export default function HelpApp ({ahelp}){
   const {visiblePages,appid} = useContext(AContext)
   const [hpage, setHpage] = useState(visiblePages[0])
   const [help, setHelp] = useState(ahelp)
-
+  console.log('appid: ', appid)
 
   useEffect(()=>{
     setHelp(ahelp)
