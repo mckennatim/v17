@@ -112,4 +112,6 @@ HelpApp.js: changes help as needed. Toggle of answer/editing display. Also toggl
 
 state: help, toggle array, 
 
+### 2/19/21 13 deploy_tcard-connect_tcard-jobs_modify_spa1_signup
+
 
