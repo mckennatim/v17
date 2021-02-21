@@ -114,4 +114,83 @@ state: help, toggle array,
 
 ### 2/19/21 13 deploy_tcard-connect_tcard-jobs_modify_spa1_signup
 
+does not work
+{"email":"mckenna.tim@gmail.com","token":"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhcHBJZCI6InNpZ251cCIsImVtYWlsIjoibWNrZW5uYS50aW1AZ21haWwuY29tIn0.ELiuUtxsNbwNKcznaI07GoZXwdtbDqmRRR-P_kanI5g"}
 
+{"email":"mckenna.tim@gmail.com","firstday":1,"token":"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJjb2lkIjoiUlJDTExDIiwicm9sZSI6InBhcnRuZXIiLCJhcHBpZCI6InNpZ251cCIsImVtYWlsaWQiOiJtY2tlbm5hLnRpbUBnbWFpbC5jb20iLCJleHAiOjE2MTcyMTY4OTkwNjZ9.Du9l5Jni3a2t2v0h-gX8VhCCIBg0CPC3fmZ5oDpfbek"}
+
+reroo
+{"email":"mckenna.tim@gmail.com","token":"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJjb2lkIjoicmVyb28iLCJyb2xlIjoicGFydG5lciIsImFwcGlkIjoic2lnbnVwIiwiZW1haWxpZCI6Im1ja2VubmEudGltQGdtYWlsLmNvbSIsImV4cCI6MTYxNzIwOTAwNDE1NX0.SU9sfK8xSD5Ji4KlQEP0rL_wBi5JSdSiWcAFpwdkB2E"}
+
+
+ln -s /home/tim/www/react/v17/tcard-connect/dist/ /home/tim/www/spa1/timecards/connect/v0/dist
+
+ln -s /home/tim/www/react/v17/tcard-connect/prod/ /home/tim/www/spa1/timecards/connect/v0/prod
+
+ln -s /home/tim/www/react/v17/tcard-signin/dist/ /home/tim/www/spa1/timecards/signin/v0/dist
+
+ln -s /home/tim/www/react/v17/tcard-signin/prod/ /home/tim/www/spa1/timecards/signin/v0/prod
+
+ln -s /home/tim/www/react/v17/tcard-connect/dist/ /home/tim/www/spa1/timecards/connect/v0/dist
+
+signin
+{"email":"mckenna.tim@gmail.com","token":"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhcHBJZCI6InNpZ25pbiIsImVtYWlsIjoibWNrZW5uYS50aW1AZ21haWwuY29tIn0.lASfx3Cm3Nvm2xs3r-It2-LBSKZAxkygbP-VCnrmGS4"}
+
+connect locahost
+http://localhost/spa1/timecards/signup/v0/dist/#/registered?email=mckenna.tim@gmail.com&token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhcHBJZCI6InNpZ251cCIsImVtYWlsIjoibWNrZW5uYS50aW1AZ21haWwuY29tIn0.ELiuUtxsNbwNKcznaI07GoZXwdtbDqmRRR-P_kanI5g
+
+RRCLLC
+
+"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJjb2lkIjoiUlJDTExDIiwicm9sZSI6InBhcnRuZXIiLCJhcHBpZCI6InNpZ251cCIsImVtYWlsaWQiOiJtY2tlbm5hLnRpbUBnbWFpbC5jb20iLCJleHAiOjE2MTcyMjMwMDQ3NTh9.PQN6PoIhHabWojm8O3nixZqXYH4YED4_CozfJr-50q0"
+
+RRCLLC connect tim 
+eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJjb2lkIjoiUlJDTExDIiwicm9sZSI6InBhcnRuZXIiLCJhcHBpZCI6InNpZ251cCIsImVtYWlsaWQiOiJtY2tlbm5hLnRpbUBnbWFpbC5jb20iLCJleHAiOjE2MTcyMjQ1MzE2NTZ9.IQ4ffmQxE2hkF6Q43MgTtXRgw7SvvRlOLX5ylmtagis
+
+
+{"email":"mckenna.tim@gmail.com","firstday":1,"token":"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJjb2lkIjoiUlJDTExDIiwicm9sZSI6InBhcnRuZXIiLCJhcHBpZCI6InNpZ251cCIsImVtYWlsaWQiOiJtY2tlbm5hLnRpbUBnbWFpbC5jb20iLCJleHAiOjE2MTcyMjMwMDQ3NTh9.PQN6PoIhHabWojm8O3nixZqXYH4YED4_CozfJr-50q0"}
+
+{"email":"mckenna.tim@gmail.com","firstday":1,"token":"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJjb2lkIjoiUlJDTExDIiwicm9sZSI6InBhcnRuZXIiLCJhcHBpZCI6InNpZ251cCIsImVtYWlsaWQiOiJtY2tlbm5hLnRpbUBnbWFpbC5jb20iLCJleHAiOjE2MTcyMjQ1MzE2NTZ9.IQ4ffmQxE2hkF6Q43MgTtXRgw7SvvRlOLX5ylmtagis"}
+
+
+gtten via urapps XXXXXXXX
+{"email":"mckenna.tim@gmail.com","token":"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhcHBJZCI6InNpZ251cCIsImVtYWlsIjoibWNrZW5uYS50aW1AZ21haWwuY29tIn0.ELiuUtxsNbwNKcznaI07GoZXwdtbDqmRRR-P_kanI5g"}
+
+noah
+eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJjb2lkIjoiUlJDTExDIiwicm9sZSI6InBhcnRuZXIiLCJhcHBpZCI6InNpZ251cCIsImVtYWlsaWQiOiJub2FoLm1ja2VubmFAZ21haWwuY29tIiwiZXhwIjoxNjE3MjI0MzQwMDM1fQ.OdmjrD7vPN0IJGbL378bIesI0XBljcVgxo_XRRVJWig
+
+http://localhost/spa1/timecards/signup/v0/dist/#/?email=noah.mckenna@gmail.com&token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJjb2lkIjoiUlJDTExDIiwicm9sZSI6InBhcnRuZXIiLCJhcHBpZCI6InNpZ251cCIsImVtYWlsaWQiOiJub2FoLm1ja2VubmFAZ21haWwuY29tIiwiZXhwIjoxNjE3MjI0Mzk1MTAzfQ.n5RE3Vp-F8kDcfsrStHsaDOEwj6TxogMgQLHZfzxph4
+
+
+returning from socialauth mckennatim 
+http://localhost/spa1/timecards/signup/v0/dist/#/registered?email=mckenna.tim@gmail.com&token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhcHBJZCI6InNpZ251cCIsImVtYWlsIjoibWNrZW5uYS50aW1AZ21haWwuY29tIn0.ELiuUtxsNbwNKcznaI07GoZXwdtbDqmRRR-P_kanI5g
+
+localhos registered 150 getCToken
+{token: "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJjb2lkIjoiU…xMDN9.90bDRsadF-X1FvtmIULq5HEDWGK0WgmS37duTFepA_M", firstday: 1, binfo: {…}, coid: "RRCLLC", role: "partner"}binfo: {auth: true, message: "user has apps", emailid: "mckenna.tim@gmail.com", appid: "signup", cos: Array(6)}coid: "RRCLLC"firstday: 1role: "partner"token: "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJjb2lkIjoiUlJDTExDIiwicm9sZSI6InBhcnRuZXIiLCJhcHBpZCI6InNpZ251cCIsImVtYWlsaWQiOiJtY2tlbm5hLnRpbUBnbWFpbC5jb20iLCJleHAiOjE2MTcyMjY4NzYxMDN9.90bDRsadF-X1FvtmIULq5HEDWGK0WgmS37duTFepA_M"__proto__: Object
+
+{"email":"mckenna.tim@gmail.com","firstday":1,"token":"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJjb2lkIjoiUlJDTExDIiwicm9sZSI6InBhcnRuZXIiLCJhcHBpZCI6InNpZ251cCIsImVtYWlsaWQiOiJtY2tlbm5hLnRpbUBnbWFpbC5jb20iLCJleHAiOjE2MTcyMjY4NzYxMDN9.90bDRsadF-X1FvtmIULq5HEDWGK0WgmS37duTFepA_M"}
+
+
+timecards.sitebuilt
+
+https://timecards.sitebuilt.net/signup/#/registered?email=mckenna.tim@gmail.com&token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhcHBJZCI6InNpZ251cCIsImVtYWlsIjoibWNrZW5uYS50aW1AZ21haWwuY29tIn0.ELiuUtxsNbwNKcznaI07GoZXwdtbDqmRRR-P_kanI5g
+
+back to signup
+{token: "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJjb2lkIjoiU…0NTB9.isZ1kb7FzNG7YWCSCzc2t7VaYsQnQyH7Wg4P1UXhkmo", firstday: 1, binfo: {…}, coid: "RRCLLC", role: "partner"}
+
+{email: "mckenna.tim@gmail.com", firstday: 1, token: "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJjb2lkIjoiU…0NTB9.isZ1kb7FzNG7YWCSCzc2t7VaYsQnQyH7Wg4P1UXhkmo"}
+
+timecards
+{"email":"mckenna.tim@gmail.com","token":"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhcHBJZCI6InNpZ251cCIsImVtYWlsIjoibWNrZW5uYS50aW1AZ21haWwuY29tIn0.ELiuUtxsNbwNKcznaI07GoZXwdtbDqmRRR-P_kanI5g"}
+
+signin
+{"email":"mckenna.tim@gmail.com","token":"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhcHBJZCI6InNpZ251cCIsImVtYWlsIjoibWNrZW5uYS50aW1AZ21haWwuY29tIn0.ELiuUtxsNbwNKcznaI07GoZXwdtbDqmRRR-P_kanI5g"}
+
+
+
+
+
+{"email":"mckenna.tim@gmail.com","token":"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhcHBJZCI6InNpZ251cCIsImVtYWlsIjoibWNrZW5uYS50aW1AZ21haWwuY29tIn0.ELiuUtxsNbwNKcznaI07GoZXwdtbDqmRRR-P_kanI5g"}
+
+### 2/20/21 14react-signin_history.replace.search
+
+connect sends a search string to urapps, If it is there it should replace ls, same of for urcos formerly registered

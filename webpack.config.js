@@ -57,6 +57,7 @@ module.exports = env =>{
     },
     plugins: [
       new CleanWebpackPlugin({
+        cleanStaleWebpackAssets: true,
         cleanOnceBeforeBuildPatterns: ['*.js', '*.js.map', '*.txt'] 
       }),
       new HtmlWebpackPlugin({

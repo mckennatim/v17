@@ -1,5 +1,5 @@
-import { Divider } from 'muicss/react';
-import React,{useContext, useEffect, useState} from 'react'
+// import { Divider } from 'muicss/react';
+import React,{useEffect, useState} from 'react'
 import { fetchConnect, fetchToken, putMail } from "../fetches";
 
 export default function Help(){
@@ -12,7 +12,7 @@ export default function Help(){
   useEffect(()=>{
     fetchConnect()
     .then((res)=>{
-      console.log('res: ', res)
+      // console.log('res: ', res)
       if (res.message){
         setMessage(res.message)
       }
@@ -30,7 +30,7 @@ export default function Help(){
       const {host, origin}= window.location
       let testUrl
       if (host=='localhost'){
-        testUrl =`http://localhost/spa1/timecards/signup/v0/dist/#/?email=${res.value.email}&token=${res.value.token}`
+        testUrl =`http://localhost/spa1/timecards/signin/v0/dist/#/urapps?email=${res.value.email}&token=${res.value.token}`
         res.testUrl=testUrl
       }else{
         testUrl =`${origin}/signup/#/?email=${res.value.email}&token=${res.value.token}`
@@ -49,7 +49,7 @@ export default function Help(){
   }
 
   const renderToken =()=>{
-    console.log('isToken: ', isToken)
+    // console.log('isToken: ', isToken)
     if(isToken){
       return(
         <div>

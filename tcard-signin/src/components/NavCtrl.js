@@ -1,19 +1,16 @@
 import React,{useContext} from 'react';
-import {AContext} from '../contexts/acontext'
+import {AContext} from '../contextA'
 import ResponsivePages from  './ResponsivePages.js'
 import {makeHref} from '../utilities/getCfg'
 
-const appid = 'connect'
 
 export const NavCtrl=(props)=>{
   const{title}=props
-  const{devInfo, path, handlePath, setAppid} = useContext(AContext)
+  const{devInfo, handleRoute} = useContext(AContext)
   const{panes}=devInfo
   const host =window.location.hostname
-  const href = makeHref(host, 'signup', '#urapps')
-  console.log('href: ', href)
+  const href = makeHref(host, 'signin', '#urapps')
 
-  setAppid(appid)
 
   const renderNav = ()=>{
     return(
@@ -22,10 +19,19 @@ export const NavCtrl=(props)=>{
       <ul style ={styles.nav.ul}>
         <li style={styles.nav.li}><a href={href}>apps</a></li>
         <li style ={styles.nav.li}>
-          <a onClick={handlePath('/connect')}>connect</a>
+          <a onClick={handleRoute('/connect')}>connect</a>
         </li>
         <li style ={styles.nav.li}>
-          <a onClick={handlePath('/help')}>help</a>
+          <a onClick={handleRoute('/urapps')}>urapps</a>
+        </li>
+        <li style ={styles.nav.li}>
+          <a onClick={handleRoute('/splash')}>splash</a>
+        </li>
+        <li style ={styles.nav.li}>
+          <a onClick={handleRoute('/registered')}>registered</a>
+        </li>
+        <li style ={styles.nav.li}>
+          <a onClick={handleRoute('/help')}>help</a>
         </li>
       </ul>
     </nav>
