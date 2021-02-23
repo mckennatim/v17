@@ -115,10 +115,10 @@ const fetchCoids=()=>{
   }
 }
 
-const fetchApps=()=>{
-  if(ls.isToken()){
+const fetchApps=(token)=>{
+  if(token){
     let url= cfg.url.api+'/reg/apps'
-    let options= {headers: {'Authorization': 'Bearer '+ ls.getItem().token}}
+    let options= {headers: {'Authorization': 'Bearer '+ token}}
     return(
       fetch(url, options)
         .then((response)=>response.json())

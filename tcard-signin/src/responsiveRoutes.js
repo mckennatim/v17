@@ -10,8 +10,8 @@ const multi={
   default: 'splash',
   urapps:[
     ['UrApps'],
-    ['UrApps', 'Help'],
-    ['UrApps', 'Connect', 'Help'],
+    ['UrApps', 'Companies'],
+    ['UrApps', 'Companies', 'Help'],
   ],
   splash:[
     ['Splash'],
@@ -20,8 +20,8 @@ const multi={
   ],
   cos:[
     ['Companies'],
-    ['Companies', 'Help'],
-    ['Companies', 'Connect', 'Help'],
+    ['Companies', 'UrApps'],
+    ['Companies', 'UrApps', 'Help'],
   ],
   connect: [
     ['Connect'],

@@ -9,7 +9,7 @@ import { ls } from "../utilities/getCfg";
 
 
 export default function Companies(){
-  const{history}=useContext(AContext)
+  const{history, setToken}=useContext(AContext)
   const [cos, setCos] =useState([])
   const[message, setMessage]=useState()
   const[getTokenMessage, setGetTokenMessage]=useState()
@@ -44,13 +44,18 @@ export default function Companies(){
       console.log('res: ', res)
       if (res.qmessage){
         setGetTokenMessage(res.qmessage)
+        ls.setItem()
+        setToken()
       }else if(res.message){
         setGetTokenMessage(res.message)
+        ls.setItem()
+        setToken()
       }else{
         setGetTokenMessage()
         const lsobj={email:res.binfo.emailid, token:res.token, firstday:res.firstday}
         console.log('lsobj: ', lsobj)
         ls.setItem(lsobj)
+        setToken(lsobj.token)
       }
     })
   }

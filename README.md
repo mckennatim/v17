@@ -191,6 +191,10 @@ signin
 
 {"email":"mckenna.tim@gmail.com","token":"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhcHBJZCI6InNpZ251cCIsImVtYWlsIjoibWNrZW5uYS50aW1AZ21haWwuY29tIn0.ELiuUtxsNbwNKcznaI07GoZXwdtbDqmRRR-P_kanI5g"}
 
-### 2/20/21 14react-signin_history.replace.search
+### 2/20/21 14tcard-signin_history.replace.search
 
 connect sends a search string to urapps, If it is there it should replace ls, same of for urcos formerly registered
+
+### 2/22/21 15tcard-signin_fetchToken-connect-ls_fetchTcardToken-cos-lsa
+
+### 2/23/21 16tcard-signin_synch_urapps+cos
