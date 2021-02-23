@@ -10,9 +10,13 @@ export default function Help(){
   const[isToken, setIsToken]=useState(false)
 
   useEffect(()=>{
+    console.log('about to connect')
     fetchConnect()
     .then((res)=>{
-      // console.log('res: ', res)
+      console.log('res: ', res)
+      if (res.qmessage){
+        setMessage(res.qmessage)
+      }
       if (res.message){
         setMessage(res.message)
       }
@@ -80,7 +84,7 @@ export default function Help(){
     if(message){
       return(
         <div>
-          <p>{message} </p>
+          <p>{message}. You might be known but you might not be able to authorize and send login link to other employees </p>
         </div>
       )
     }else{

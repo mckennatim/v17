@@ -10,6 +10,15 @@ cfg.url.authqry = authqry
 
 const ls = storageLocal(cfg.superapp)
 
+let lsa
+if (cfg.appid=='signin'){
+  lsa =storageLocal("signin")
+}else{
+  lsa =storageLocal(cfg.appid)
+}
+
+let lsb =storageLocal("test")
+
 const makeHref=(host,app,rt)=>{
   let href
   if(host=='timecards.sitebuilt.net'){
@@ -25,5 +34,5 @@ const makeHref=(host,app,rt)=>{
   return href
 }
 
-export{ls, cfg, makeHref}
+export{ls, lsa, lsb, cfg, makeHref}
 

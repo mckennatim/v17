@@ -3,7 +3,6 @@
 const storageLocal = (itemName)=>{
   var itemStr =  localStorage.getItem(itemName)
   const getItem=()=>{
-    // console.log('in getItem')
     if(!localStorage.getItem(itemName)){
       return null
     }
@@ -11,6 +10,12 @@ const storageLocal = (itemName)=>{
   }
   const setItem=(obj)=>{
     localStorage.setItem(itemName, JSON.stringify(obj))
+  }
+  const isToken=()=>{
+    console.log('itemStr: ', itemStr)
+    if(itemStr=="undefined" || itemStr==null)return false
+    if(getItem().token.length<50) return false
+    return true
   }
   return{
     itemName: itemName,
@@ -25,7 +30,8 @@ const storageLocal = (itemName)=>{
       }
     },
     getToken: ()=>getItem().token,
-    getKey: (key)=>getItem()[key]
+    getKey: (key)=>getItem()[key],
+    isToken:isToken
   }
 }
 

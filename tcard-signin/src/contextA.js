@@ -2,8 +2,6 @@ import React, { createContext, useReducer, useState } from 'react';
 import { createHashHistory } from 'history';
 let history = createHashHistory();
 
-console.log('window.location: ', window.location)
-console.log('history.location: ', history.location)
 const aInitState = {
   job2edit:'',
   foundJobs:[],
