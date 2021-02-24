@@ -198,3 +198,5 @@ connect sends a search string to urapps, If it is there it should replace ls, sa
 ### 2/22/21 15tcard-signin_fetchToken-connect-ls_fetchTcardToken-cos-lsa
 
 ### 2/23/21 16tcard-signin_synch_urapps+cos
+
+### 2/23/21 17tcard-signing+css

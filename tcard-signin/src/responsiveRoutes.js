@@ -15,13 +15,13 @@ const multi={
   ],
   splash:[
     ['Splash'],
-    ['Splash', 'Help'],
-    ['Splash', 'Connect', 'Help'],
+    ['Splash', 'Companies'],
+    ['Splash', 'UrApps', 'Companies'],
   ],
   cos:[
     ['Companies'],
     ['Companies', 'UrApps'],
-    ['Companies', 'UrApps', 'Help'],
+    ['Companies', 'UrApps', 'Splash'],
   ],
   connect: [
     ['Connect'],
@@ -30,7 +30,8 @@ const multi={
   ],
   help:[
     ['Help'],
-    ['Connect', 'Help']
+    ['Help', 'UrApps'],
+    ['Help', 'Companies', 'UrApps']
   ]
 }
 

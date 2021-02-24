@@ -1,12 +1,11 @@
 import {ls, cfg} from './utilities/getCfg'
 import {geta} from './utilities/wfuncs'
 
-const fetchHelp=(appid)=>{
-  var lsh = ls.getItem();
-  if(geta('lsh.token', lsh)){
+const fetchHelp=(appid, token)=>{
+  if(token){
     let url= cfg.url.api+'/common/help/'+appid
     let options= {
-      headers: {'Authorization': 'Bearer '+ lsh['token']},
+      headers: {'Authorization': 'Bearer '+ token},
       method: 'GET'
     }
     return(
@@ -24,12 +23,11 @@ const fetchHelp=(appid)=>{
 }
 
 const putVote=(appid,vote)=>{
-  var lsh = ls.getItem();
   console.log(JSON.stringify({vote:vote}))
-  if(geta('lsh.token', lsh)){
+  if(ls.isToken()){
     let url= cfg.url.api+'/common/help/vote/'+appid
     let options= {
-      headers: {'Authorization': 'Bearer '+ lsh['token'],
+      headers: {'Authorization': 'Bearer '+ ls.getToken(),
         Accept: 'application/json',
         'Content-Type': 'application/json',
       },
@@ -51,12 +49,11 @@ const putVote=(appid,vote)=>{
 }
 
 const putHelpAns=(appid, ans)=>{
-  var lsh = ls.getItem();
   console.log(JSON.stringify({ans:ans}))
-  if(geta('lsh.token', lsh)){
+  if(ls.isToken()){
     let url= cfg.url.api+'/common/help/ans/'+appid
     let options= {
-      headers: {'Authorization': 'Bearer '+ lsh['token'],
+      headers: {'Authorization': 'Bearer '+ ls.getToken(),
         Accept: 'application/json',
         'Content-Type': 'application/json',
       },
@@ -77,12 +74,11 @@ const putHelpAns=(appid, ans)=>{
   }
 }
 const putHelpQues=(appid,ques)=>{
-  var lsh = ls.getItem();
   console.log(JSON.stringify({ques:ques}))
-  if(geta('lsh.token', lsh)){
+  if(ls.isToken()){
     let url= cfg.url.api+'/common/help/ques/'+appid
     let options= {
-      headers: {'Authorization': 'Bearer '+ lsh['token'],
+      headers: {'Authorization': 'Bearer '+ ls.getToken(),
         Accept: 'application/json',
         'Content-Type': 'application/json',
       },
@@ -104,11 +100,10 @@ const putHelpQues=(appid,ques)=>{
 }
 
 const delHelp=(appid, id, qa)=>{
-  var lsh = ls.getItem();
-  if(geta('lsh.token', lsh)){
+  if(ls.isToken()){
     let url= cfg.url.api+'/common/help/del/'+appid+'/'+qa+'/'+id  
     let options= {
-      headers: {'Authorization': 'Bearer '+ lsh['token'],
+      headers: {'Authorization': 'Bearer '+ ls.getToken(),
         Accept: 'application/json',
         'Content-Type': 'application/json',
       },

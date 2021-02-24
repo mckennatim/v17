@@ -1,7 +1,7 @@
 import {ls, lsa, lsb, cfg} from './utilities/getCfg'
 import {geta} from './utilities/wfuncs'
 
-const fetchConnect=()=>{
+const fetchConnect=(token)=>{
   if(ls.isToken()){
     let url= cfg.url.api+'/persons/connect/'
     let options= {
@@ -66,7 +66,7 @@ const fetchTcardToken=(coid)=>{
 
 const putMail=(obj)=>{
   console.log(JSON.stringify(obj))
-  if(ls.isToken){
+  if(ls.isToken()){
     let url= cfg.url.api+'/persons/sendmail/'
     let options= {
       headers: {'Authorization': 'Bearer '+ ls.getItem().token,

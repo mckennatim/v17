@@ -5,9 +5,6 @@ import {AContext} from '../contextA'
 import {putHelpQues, putHelpAns, delHelp, putVote } from '../fetchHelp'
 
 
-
-
-
 export default function HelpApp ({ahelp}){
   const [letvote,]=useState(true)
   const [toggles,setToggles]=useState(new Array(100).fill(false))
@@ -16,7 +13,6 @@ export default function HelpApp ({ahelp}){
   const {visiblePages,appid} = useContext(AContext)
   const [hpage, setHpage] = useState(visiblePages[0])
   const [help, setHelp] = useState(ahelp)
-  console.log('appid: ', appid)
 
   useEffect(()=>{
     setHelp(ahelp)

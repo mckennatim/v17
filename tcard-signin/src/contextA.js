@@ -1,7 +1,7 @@
 import React, { createContext, useReducer, useState } from 'react';
 import { createHashHistory } from 'history';
 let history = createHashHistory();
-import { ls } from "./utilities/getCfg";
+import { ls, cfg } from "./utilities/getCfg";
 
 const aInitState = {
   job2edit:'',
@@ -25,8 +25,9 @@ export const AReducer= (state,action)=>{
 export const AProvider = ({children})=>{
   /* dispatcher to context of app specific state change*/
   const [state, dispatch] = useReducer(AReducer, aInitState)
-  const [appid, setAppid] =useState('')
+  const [appid, setAppid] =useState(cfg.appid)
   const [token, setToken]=useState(ls.getToken())
+  const [workerInfo, setWorkerInfo]=useState(ls.getItem())
 
   /*general router and responsive code */
   const [devInfo,setDevInfo] =useState(getDevInfo())
@@ -97,6 +98,8 @@ export const AProvider = ({children})=>{
       setAppid,
       token,
       setToken,
+      workerInfo,
+      setWorkerInfo,
       history,
       foundJobs: state.foundJobs,
       job2edit: state.job2edit,

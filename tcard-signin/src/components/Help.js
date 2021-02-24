@@ -5,18 +5,29 @@ import {AContext} from '../contextA'
 import {ls} from '../utilities/getCfg'
 
 export default function Help(){
-  const {visiblePages, appid} = useContext(AContext)
+  const {token, visiblePages, appid} = useContext(AContext)
   const [help, setHelp]= useState([])
   const [, setAllhelp] = useState([])
+  const [message, setMessage]=useState()
 
   useEffect(()=>{
-    fetchHelp('connect')
+    fetchHelp(appid, token)
     .then((res)=>{
       console.log('res: ', res)
-      setAllhelp(res.results)
-      makeData(res.results)
+      if (res.qmessage){
+        setMessage(res.qmessage)
+        if (res.qmessage=="you dont exist! Try re-registering ") {
+          setMessage(`Oops,${res.qmessage}At least, you are not connected to an active company so you have no apps to see`)
+        }
+      }else if (res.message){
+        setMessage(res.message)
+      }else{
+        setAllhelp(res.results)
+        makeData(res.results)
+        setMessage()
+      }
     })
-  },[])
+  },[token])
 
   function makeData(allhelp){
     const ahelp = filterByPageNames(allhelp)
@@ -99,10 +110,13 @@ export default function Help(){
 
 
   const render =()=>{
-    if(!ls.itemStr){
-      return(
-        <div>register</div>
-      )
+    if(message){
+        return(
+          <div>
+            <h4>Help</h4>
+            <p>{message} </p>
+          </div>
+        )
     }else{
       return(
       <div>
@@ -112,7 +126,6 @@ export default function Help(){
       </div>
       )
     }
-
   }
 
   return(
@@ -124,7 +137,8 @@ export default function Help(){
 
 const styles={
   out:{
-    background: "#99CCFF"
+    background: "#99CCFF",
+    padding: "4px"
   }
 }
 
