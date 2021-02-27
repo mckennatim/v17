@@ -2,7 +2,6 @@ import {ls, cfg} from './utilities/getCfg'
 import {geta} from './utilities/wfuncs'
 
 const fetchHelp=(appid)=>{
-  console.log('in fetch help o')
   var lsh = ls.getItem();
   if(geta('lsh.token', lsh)){
     let url= cfg.url.api+'/common/help/'+appid

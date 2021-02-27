@@ -116,7 +116,7 @@ export default function Help(){
 const styles ={
   out:{
     background: "#99CCCC",
-    height:"500px",
+    height:"580px",
     padding: "8px"
   }
 }

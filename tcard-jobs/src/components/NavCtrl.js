@@ -12,7 +12,7 @@ function NavCtrl(props) {
   const{panes}=devInfo
 
   const host =window.location.hostname
-  const href = makeHref(host, 'signup', '#urapps')
+  const href = makeHref(host, 'signin', '#urapps')
   const tcardhref = makeHref(host, 'tcard', '#tcard')
 
   const[, settings]= useState({})

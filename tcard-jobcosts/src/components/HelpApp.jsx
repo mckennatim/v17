@@ -1,7 +1,7 @@
 import React, {useState, useContext, useEffect} from 'react'// eslint-disable-line no-unused-vars
 
 import {Accordion, AccordionSummary, AccordionDetails} from '@material-ui/core';// eslint-disable-line no-unused-vars
-import {AContext} from '../contexts/acontext'
+import {AContext} from '../contextA'
 import {putHelpQues, putHelpAns, delHelp, putVote } from '../fetchHelp'
 
 

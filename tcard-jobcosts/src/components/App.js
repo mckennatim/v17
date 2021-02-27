@@ -1,5 +1,5 @@
 import React,{Suspense} from 'react';
-import {AProvider} from '../contexts/acontext'
+import {AProvider} from '../contextA'
 import { NavCtrl } from "./NavCtrl.js";
 
 export const App=(props)=> {

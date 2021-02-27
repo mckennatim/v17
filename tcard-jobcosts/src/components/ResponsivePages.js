@@ -1,6 +1,6 @@
 import React, {useContext, useEffect} from 'react'
-import {compoi, multi, appid} from '../responsiveRoutes'
-import {AContext} from '../contexts/acontext'
+import {compoi, multi} from '../responsiveRoutes'
+import {AContext} from '../contextA'
 
 const styles={
   container:{
@@ -11,8 +11,7 @@ const styles={
 }
 
 export default function ResponsivePages(){
-  const{devInfo, path,  visiblePages, setVisiblePages, setAppid} = useContext(AContext)
-  setAppid(appid)
+  const{devInfo, path,  visiblePages, setVisiblePages} = useContext(AContext)
   const {panes} = devInfo
 
   useEffect(()=>{

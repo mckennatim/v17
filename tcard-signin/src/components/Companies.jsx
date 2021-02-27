@@ -70,7 +70,8 @@ export default function Companies(){
         background: '#99CCCC',
         padding: '6px',
         overflow: 'hidden',
-        border: 'solid 1px black'
+        border: 'solid 1px black',
+        borderRadius: "3px"
       },
       divgt:{
         float:'right'
@@ -126,6 +127,7 @@ export default function Companies(){
           <ul style={style.myli.ul}>
             {coLis}
           </ul>
+          <span>Click on a company to access its apps.</span>
           {renderGetTokenMessage()}
         </div>
       )
@@ -144,7 +146,7 @@ export default function Companies(){
 
 const styles ={
   out:{
-    background: "#99CCCC",
+    background: "#4eb2e0",
     height:"580px",
     padding: "8px"
   }

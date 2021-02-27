@@ -23,7 +23,7 @@ export const NavCtrl=(props)=>{
 
   const renderNav = ()=>{
     return(
-    <nav style ={styles.nav.nav}>
+    <nav style ={styles.nav.banner}>
       <span> {title} </span>
       <ul style ={styles.nav.ul}>
         <li style ={styles.nav.li}>
@@ -35,7 +35,7 @@ export const NavCtrl=(props)=>{
 
         
         <li style ={styles.nav.li}>
-          <a onClick={handleRoute('/cos')}>cos</a>
+          <a onClick={handleRoute('/cos')}>companies</a>
         </li>
         {workerInfo && workerInfo.role=='partner' && 
         <li style ={styles.nav.li}>
@@ -54,7 +54,7 @@ export const NavCtrl=(props)=>{
   }
 
   return(
-  <div> 
+  <div style ={styles.nav.banner}> 
     {renderNav()}
     <ResponsivePages/>
   </div>    
@@ -64,6 +64,9 @@ export const NavCtrl=(props)=>{
 
 const styles ={
   nav: {
+    banner:{
+      background: "#bad7d8"
+    },
     ul:{
       textAlign: 'left',
       listStyleType: 'none',

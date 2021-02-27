@@ -72,6 +72,7 @@ export default function AddJob (){
     const catarr =JSON.parse(beingEdited.categories)
     const tablarr = catarr.map((c,i)=>{
       console.log('catarr.length: ', catarr.length)
+      console.log('catarr: ', catarr)
       return(
       <tr  key={i}>
          <td width="10%" ><a name={i}
@@ -240,12 +241,12 @@ const beingEditedReducer=(state,action)=>{
       return {...state, categories:catstr}
     case 'changeCatHrs':
       catarr = JSON.parse(state.categories)
-      catarr[action.payload.idx].hrs=action.payload.field
+      catarr[action.payload.idx].hrs=action.payload.field*1
       catstr =JSON.stringify(catarr)
       return {...state, categories:catstr}
     case 'changeCatLabor':
       catarr = JSON.parse(state.categories)
-      catarr[action.payload.idx].labor=action.payload.field
+      catarr[action.payload.idx].labor=action.payload.field*1
       catstr =JSON.stringify(catarr)
       return {...state, categories:catstr}  
     case 'changeCatCk':

@@ -9,20 +9,20 @@ export default function Splash(){
   const render = ()=>{
     if(token){
       return(
-        <button onClick={handleRoute('/urapps')}>
+        <button style={styles.button} onClick={handleRoute('/urapps')}>
           This machine is registered,click to go to your apps
         </button>
       )
     }else {
       if(lsa.itemStr){
         return(
-          <button onClick={handleRoute('/cos')}>
+          <button style={styles.button} onClick={handleRoute('/cos')}>
             You are not connected to a company on this machine. click to go to companies
           </button>
         )
       }else{
         return(
-          <button onClick={window.location.href=cfg.url.authqry} >
+          <button style={styles.button} onClick={window.location.href=cfg.url.authqry} >
             You are not registered on this machine, Click to register
           </button>
         )
@@ -70,8 +70,8 @@ export default function Splash(){
 
 const styles ={
   out:{
-    background: "#99CCCC",
-    height:"500px",
+    background: "#4eb2e0",
+    height:"580px",
     padding: "8px"
   },
   root: {
@@ -87,6 +87,10 @@ const styles ={
   paper: {
     textAlign: 'center',
   },
+  button:{
+    background: "#ff00e5",
+    borderRadius: "10px"
+  }
 }
 
 const style = {

@@ -17,7 +17,7 @@ const makeHref=(host,app,rt)=>{
   }else if(host=='apps.sitebuilt.net'){
     href= `../${app}/`
   }else {
-    href = `../../../../spa1/timecards/${app}/v0/dist/`
+    href = `../../../../../../spa1/timecards/${app}/v0/dist/`
   }
   if(rt){
     href+=rt

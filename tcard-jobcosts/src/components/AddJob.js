@@ -1,18 +1,49 @@
 import React,{useEffect, useReducer, useContext} from 'react'
-import {fetchJob, postJob} from '../fetches'
-// import Form from 'muicss/lib/react/form';// eslint-disable-line 
-import Input from 'muicss/lib/react/input';// eslint-disable-line 
+import {postJob} from '../fetches'
+import Input from 'muicss/lib/react/input'; 
 import Button from 'muicss/lib/react/button';
 import Checkbox from 'muicss/lib/react/checkbox';
 // import {Jobs}from './Jobs'
-import {AContext} from '../contexts/acontext'
+import {AContext} from '../contextA'
 import {ls} from '../utilities/getCfg'
 
-const blajob = {job:'', categories:'[]', hrs:null, labor:null,archived:0,default:0, defcat:0, jobwoCat:1}
+// const blajob = {job:'', categories:'[]', hrs:null, labor:null,archived:0,default:0, defcat:0, jobwoCat:1}
+
+const blajob = {
+address: null,
+archived: 0,
+categories: "[]",
+coid: "reroo",
+contacts: null,
+default: 0,
+defcat: 0,
+enddate: "2021-01-01T05:00:00.000Z",
+hrs: 0,
+id: 0,
+job: "",
+jobwoCat: 1,
+labor: 0,
+material: null,
+ovhpft: null,
+startdate: "1990-01-01T05:00:00.000Z",
+subs: null,
+total: null,
+}
 
 export default function AddJob (){
-  const{job2edit, setJob2edit, foundJobs, setFoundJobs} = useContext(AContext)
+  const{selectedJob, setSelectedJob, foundJobs, setFoundJobs} = useContext(AContext)
   const [beingEdited, dispatchBeingEdited]=useReducer(beingEditedReducer, blajob)
+  console.log('selectedJob: ', selectedJob)
+  console.log('beingEdited: ', beingEdited)
+
+  // if(selectedJob){
+  //   dispatchBeingEdited({type:'replace', payload:selectedJob})
+  // }ss
+  useEffect(()=>{
+    if(selectedJob){
+      dispatchBeingEdited({type:'replace', payload:selectedJob})
+    }
+  },[selectedJob])
   
 
   const updateJob =()=>{
@@ -23,7 +54,7 @@ export default function AddJob (){
       setFoundJobs(retJobs)
       console.log('retJobs, foundJobs: ', retJobs, foundJobs)
       saveJob()
-      setJob2edit('')
+      setSelectedJob('')
       dispatchBeingEdited({type:'replace', payload:blajob})
     }
   }
@@ -48,21 +79,6 @@ export default function AddJob (){
     postJob(beingEdited)
     .then((res)=>console.log('res: ', res))
   }
-  
-
-  useEffect(()=>{
-    getJob()
-  },[job2edit])
-
-  const getJob=()=>{
-    if(job2edit.length>0){
-      fetchJob(job2edit)
-      .then((res)=>{
-        console.log('res: ', res)
-        dispatchBeingEdited({type:'replace', payload:res.job})
-      })
-    }
-  }
 
   const addRec=()=>{
     dispatchBeingEdited({type:'changeCatStr', payload:{cat:'', hrs:'', labor:'', def:0}})
@@ -72,6 +88,7 @@ export default function AddJob (){
     const catarr =JSON.parse(beingEdited.categories)
     const tablarr = catarr.map((c,i)=>{
       console.log('catarr.length: ', catarr.length)
+      console.log('catarr: ', catarr)
       return(
       <tr  key={i}>
          <td width="10%" ><a name={i}
@@ -240,12 +257,12 @@ const beingEditedReducer=(state,action)=>{
       return {...state, categories:catstr}
     case 'changeCatHrs':
       catarr = JSON.parse(state.categories)
-      catarr[action.payload.idx].hrs=action.payload.field
+      catarr[action.payload.idx].hrs=action.payload.field*1
       catstr =JSON.stringify(catarr)
       return {...state, categories:catstr}
     case 'changeCatLabor':
       catarr = JSON.parse(state.categories)
-      catarr[action.payload.idx].labor=action.payload.field
+      catarr[action.payload.idx].labor=action.payload.field*1
       catstr =JSON.stringify(catarr)
       return {...state, categories:catstr}  
     case 'changeCatCk':

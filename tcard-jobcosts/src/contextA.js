@@ -1,9 +1,10 @@
 import React, { createContext, useReducer, useState } from 'react';
 import { createHashHistory } from 'history';
 let history = createHashHistory();
+import {ls, cfg } from "./utilities/getCfg";
+
 
 const aInitState = {
-  job2edit:'',
   foundJobs:[{id:'', job:'', category:'', week:'', yr:''}
 ],
   dev:{},
@@ -15,8 +16,8 @@ export const AContext = createContext(aInitState)
 /* app specific actions*/
 export const AReducer= (state,action)=>{
   switch(action.type){
-    case 'sETjOB2eDIT':
-      return{...state, job2edit:action.payload}
+    case 'sETsELECTEDjOB':
+      return{...state, selectedJob:action.payload}
     case 'sETfOUNDjOBS':
       return {...state, foundJobs:action.payload}
   }
@@ -25,12 +26,15 @@ export const AReducer= (state,action)=>{
 export const AProvider = ({children})=>{
   /* dispatcher to context of app specific state change*/
   const [state, dispatch] = useReducer(AReducer, aInitState)
+  const appid = cfg.appid
+  const token =ls.getToken()
 
   /*general router and responsive code */
   const [devInfo,setDevInfo] =useState(getDevInfo())
   const [visiblePages, setVisiblePages] = useState([])
   const[path, setPath] = useState(window.location.hash.substr(1))
-  const [appid,setAppid] =useState('')
+  
+
 
   function getDevInfo (){
     let ws = window.innerWidth
@@ -68,10 +72,10 @@ export const AProvider = ({children})=>{
   }
 
   /*app specific dispatch code for objects and functions in context */
-  function setJob2edit(job2edit) {
+  function setSelectedJob(selectedJob) {
     dispatch({
-        type: 'sETjOB2eDIT',
-        payload: job2edit
+        type: 'sETsELECTEDjOB',
+        payload: selectedJob
     });
   }
 
@@ -90,11 +94,11 @@ export const AProvider = ({children})=>{
       visiblePages,
       setVisiblePages,
       appid,
-      setAppid,
+      token,
       foundJobs: state.foundJobs,
-      job2edit: state.job2edit,
+      selectedJob: state.selectedJob,
       setFoundJobs,
-      setJob2edit
+      setSelectedJob
     }}>
       {children}
     </AContext.Provider>

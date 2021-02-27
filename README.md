@@ -123,6 +123,10 @@ reroo
 {"email":"mckenna.tim@gmail.com","token":"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJjb2lkIjoicmVyb28iLCJyb2xlIjoicGFydG5lciIsImFwcGlkIjoic2lnbnVwIiwiZW1haWxpZCI6Im1ja2VubmEudGltQGdtYWlsLmNvbSIsImV4cCI6MTYxNzIwOTAwNDE1NX0.SU9sfK8xSD5Ji4KlQEP0rL_wBi5JSdSiWcAFpwdkB2E"}
 
 
+ln -s /home/tim/www/react/v17/tcard-jobs/dist/ /home/tim/www/spa1/timecards/jobs/v0/dist
+
+ln -s /home/tim/www/react/v17/tcard-jobs/prod/ /home/tim/www/spa1/timecards/jobs/v0/prod
+
 ln -s /home/tim/www/react/v17/tcard-connect/dist/ /home/tim/www/spa1/timecards/connect/v0/dist
 
 ln -s /home/tim/www/react/v17/tcard-connect/prod/ /home/tim/www/spa1/timecards/connect/v0/prod
@@ -200,3 +204,5 @@ connect sends a search string to urapps, If it is there it should replace ls, sa
 ### 2/23/21 16tcard-signin_synch_urapps+cos
 
 ### 2/23/21 17tcard-signing+css
+
+### 2/27/21 18tcard-jobcost

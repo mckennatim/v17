@@ -65,7 +65,7 @@ export default function UrApps(){
             <a href={href}>
               <div key={i}>
                 <img src={img} alt={a} style={styles.myli.img}/> 
-                <span>
+                <span style={styles.myli.span}>
                 {a}
                 </span>
               </div>
@@ -97,6 +97,10 @@ const styles ={
     padding: "8px"
   },
   myli :{
+    span:{
+      fontSize: "18px",
+      color: "black"
+    },
     img:{
       padding:'6px',
       width:'40px'
@@ -112,10 +116,11 @@ const styles ={
       paddingLeft: '0px'
     },
     li:{
-      background: '#99CCCC',
+      background: '#f9f689',
       padding: '2px',
       overflow: 'hidden',
-      border: 'solid 1px black'
+      border: 'solid 1px black',
+      borderRadius: '6px'
     },
     idx:{
       float: 'left',

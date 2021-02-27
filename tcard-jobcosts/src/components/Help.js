@@ -1,7 +1,7 @@
 import React, { useEffect , useState, useContext} from 'react'
 import {fetchHelp} from '../fetchHelp'
 import HelpApp from "./HelpApp.jsx";
-import {AContext} from '../contexts/acontext'
+import {AContext} from '../contextA'
 import {ls} from '../utilities/getCfg'
 
 export default function Help(){
@@ -12,7 +12,6 @@ export default function Help(){
   useEffect(()=>{
     fetchHelp(appid)
     .then((res)=>{
-      console.log('res: ', res)
       setAllhelp(res.results)
       makeData(res.results)
     })
