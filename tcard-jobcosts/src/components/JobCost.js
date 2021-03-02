@@ -28,16 +28,11 @@ export default function JobCost (){
     if(job){
       fetchJob(job,token)
       .then((res)=>{
-        console.log('res: ', res)
-        console.log('costs: ', res.costs)
-        console.log('bid: ', res.bid)
         setSelectedJob(res.bid)
-        setJobCost({job:job,bid:res.bid,costs:res.costs})
+        setJobCost(res.costs)
       })
     }
   },[job])
-
-  console.log('selectedJob: ', selectedJob)
 
   const clickJob=(c)=>()=>{
     setJob(c)
@@ -90,7 +85,7 @@ export default function JobCost (){
       return(
       <div>
         {renderSearched()}
-        {jobCost && <AJob ajob={jobCost}/>}
+        {jobCost && <AJob costs={jobCost}/>}
       </div>
       )
     }

@@ -3,6 +3,7 @@ import {postJob} from '../fetches'
 import Input from 'muicss/lib/react/input'; 
 import Button from 'muicss/lib/react/button';
 import Checkbox from 'muicss/lib/react/checkbox';
+import Textarea from 'muicss/lib/react/textarea';
 // import {Jobs}from './Jobs'
 import {AContext} from '../contextA'
 import {ls} from '../utilities/getCfg'
@@ -10,14 +11,14 @@ import {ls} from '../utilities/getCfg'
 // const blajob = {job:'', categories:'[]', hrs:null, labor:null,archived:0,default:0, defcat:0, jobwoCat:1}
 
 const blajob = {
-address: null,
+address: '',
 archived: 0,
 categories: "[]",
 coid: "reroo",
 contacts: null,
 default: 0,
 defcat: 0,
-enddate: "2021-01-01T05:00:00.000Z",
+enddate: "2021-01-01",
 hrs: 0,
 id: 0,
 job: "",
@@ -25,20 +26,15 @@ jobwoCat: 1,
 labor: 0,
 material: null,
 ovhpft: null,
-startdate: "1990-01-01T05:00:00.000Z",
+startdate: "1990-01-01",
 subs: null,
 total: null,
 }
 
 export default function AddJob (){
-  const{selectedJob, setSelectedJob, foundJobs, setFoundJobs} = useContext(AContext)
+  const{token,selectedJob, setSelectedJob, foundJobs, setFoundJobs} = useContext(AContext)
   const [beingEdited, dispatchBeingEdited]=useReducer(beingEditedReducer, blajob)
-  console.log('selectedJob: ', selectedJob)
-  console.log('beingEdited: ', beingEdited)
 
-  // if(selectedJob){
-  //   dispatchBeingEdited({type:'replace', payload:selectedJob})
-  // }ss
   useEffect(()=>{
     if(selectedJob){
       dispatchBeingEdited({type:'replace', payload:selectedJob})
@@ -54,7 +50,7 @@ export default function AddJob (){
       setFoundJobs(retJobs)
       console.log('retJobs, foundJobs: ', retJobs, foundJobs)
       saveJob()
-      setSelectedJob('')
+      setSelectedJob(beingEdited)
       dispatchBeingEdited({type:'replace', payload:blajob})
     }
   }
@@ -76,7 +72,7 @@ export default function AddJob (){
   }
 
   const saveJob=()=>{
-    postJob(beingEdited)
+    postJob(beingEdited,token)
     .then((res)=>console.log('res: ', res))
   }
 
@@ -87,31 +83,29 @@ export default function AddJob (){
   const renderCategories=()=>{
     const catarr =JSON.parse(beingEdited.categories)
     const tablarr = catarr.map((c,i)=>{
-      console.log('catarr.length: ', catarr.length)
-      console.log('catarr: ', catarr)
       return(
       <tr  key={i}>
-         <td width="10%" ><a name={i}
+         <td width="8%" ><a name={i}
          onClick={(e)=>dispatchBeingEdited(
             {type:'deleteCat', payload:{idx:e.target.name}}
           )           
          }>x</a></td> 
-        <td width="40%" ><Input name={i} placeholder='category'
+        <td width="35%" ><Input name={i} placeholder='category'
         value={c.cat} 
         onChange={(e)=>dispatchBeingEdited(
           {type:'changeCat', payload:{idx:e.target.name, field:e.target.value}}
         )}/></td>
-        <td width="15%" ><Input name={i} placeholder='hrs'
+        <td width="17%" ><Input name={i} placeholder='hrs'
         value={c.hrs} 
         onChange={(e)=>dispatchBeingEdited(
           {type:'changeCatHrs', payload:{idx:e.target.name, field:e.target.value}}
         )}/></td>
-        <td width="20%" ><Input name={i} placeholder='labor$'
+        <td width="22%" ><Input name={i} placeholder='labor$'
         value={c.labor} 
         onChange={(e)=>dispatchBeingEdited(
           {type:'changeCatLabor', payload:{idx:e.target.name, field:e.target.value}}
         )}/></td>
-        <td width="15%" ><Checkbox name={i} label="default"
+        <td width="12%" ><Checkbox name={i} label="def"
         checked={c.def} 
         onChange={(e)=>dispatchBeingEdited(
           {type:'changeCatCk', payload:{idx:e.target.name, field:e.target.checked}}
@@ -146,13 +140,24 @@ export default function AddJob (){
         <table className="mui-table">
           <tbody><tr>
             <td width="85%">
-            <Input placeholder="Job" value={beingEdited.job} onChange={(e)=>dispatchBeingEdited({type:'changeJob', payload:e.target.value})}/>
+            <Input label="Job" floatingLabel={true}
+            value={beingEdited.job} 
+            onChange={(e)=>dispatchBeingEdited({type:'changeJob', payload:e.target.value})}
+            />
             </td>
-            <td width="15%" ><Checkbox label="default"
+            <td width="15%" ><Checkbox label="def"
             checked={beingEdited.default} 
             onChange={(e)=>dispatchBeingEdited(
               {type:'changeCk', payload:e.target.checked}
             )}/></td>
+            </tr>
+            <tr>
+            <td width="100%">
+            <Textarea label="Address"
+            value={beingEdited.address} 
+            onChange={(e)=>dispatchBeingEdited({type:'changeAddress', payload:e.target.value})}
+            />
+            </td>
             </tr>
             {beingEdited.categories.length>3 &&
             <tr> 
@@ -173,9 +178,14 @@ export default function AddJob (){
           <tbody>
           <tr>
           <td width="50%" key="0">
-          <Input placeholder="Bid Hours " value={beingEdited.hrs==null ? '' :beingEdited.hrs} onChange={(e)=>dispatchBeingEdited({type:'changeHrs', payload:e.target.value})}/>
+          <Input placeholder="Bid Hours" label="Bid Hrs" floatingLabel={true} value={beingEdited.hrs==null ? '' :beingEdited.hrs} 
+          onChange={(e)=>dispatchBeingEdited({type:'changeHrs', payload:e.target.value})}
+          />
           </td><td width="50%" key="1">
-          <Input placeholder="Bid Labor $" value={beingEdited.labor==null ? '' : beingEdited.labor} onChange={(e)=>dispatchBeingEdited({type:'changeLabor', payload:e.target.value})}/>
+          <Input label="Bid Labor$" floatingLabel={true} 
+          value={beingEdited.labor==null ? '' : beingEdited.labor} 
+          onChange={(e)=>dispatchBeingEdited({type:'changeLabor', payload:e.target.value})}
+          />
           </td>
           </tr></tbody>
         </table>
@@ -186,7 +196,7 @@ export default function AddJob (){
         <span> archive </span>
         <input type="checkbox" 
           checked={beingEdited.archived}
-          onClick={(e)=>
+          onChange={(e)=>
             dispatchBeingEdited({type:'archive', payload:e.target.checked})
           }
         />  
@@ -213,24 +223,22 @@ export default function AddJob (){
   )
 }
 
-
 const beingEditedReducer=(state,action)=>{
   let catarr =[]
   let catstr=''
-  console.log('state: ', state)
-  console.log('action: ', action)
   switch (action.type){
     case 'replace':
-      console.log('action.payload: ', action.payload)
       return action.payload
     case 'changeJob':
       return {...state, job:action.payload}
+    case 'changeAddress':
+      return {...state, address:action.payload}
     case 'changeHrs':
-      return {...state, hrs:action.payload}
+        return {...state, hrs:action.payload}
     case 'changeLabor':
       return {...state, labor:action.payload}
     case 'changeCk':
-      return {...state, default:action.payload*1}
+      return {...state, default:action.payload}
     case 'changeWoCat' : 
       return {...state, jobwoCat:action.payload}
     case 'archive':

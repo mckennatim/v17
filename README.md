@@ -206,3 +206,5 @@ connect sends a search string to urapps, If it is there it should replace ls, sa
 ### 2/23/21 17tcard-signing+css
 
 ### 2/27/21 18tcard-jobcost
+
+### 3/2/21 19tcard-jobcost_pc_byday
