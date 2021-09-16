@@ -13,6 +13,16 @@ export default function AJob({costs}){
     setPercArr(p)
   }
 
+  function dateFromDay(year, day){
+    var options = {  weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'};
+
+    var date = new Date(year, 0); // initialize a date in `year-01-01`
+    const nd = new Date(date.setDate(day-2))
+    console.log('typeof(nd): ', typeof(nd))
+    return nd.toLocaleString('en-us', options) // add the number of days
+  }
+
+
   const renderDays=()=>{
     const dhrs = Object.values(costs.reduce((r, {wdprt,hrs})=>{
       return(
@@ -33,10 +43,14 @@ export default function AJob({costs}){
       return acc
     },[])
     const dwrows = rdhrs.map((d,i)=>{
+      
       if (d.wdprt){
+        const da =d.wdprt.split('-')
+        const day =da[1].slice(1)*7+da[2]*1
+        const dstr =dateFromDay(da[0], day)
         return(
         <tr key={i}>
-          <td colSpan="2" align="left"><b>{d.wdprt}</b></td>
+          <td colSpan="2" align="left"><b>{dstr}</b>{d.wdprt}</td>
           <td></td>
           <td align="left"></td>
           <td align="right"><b>{d.hrs.toFixed()}</b></td>
@@ -95,27 +109,34 @@ export default function AJob({costs}){
       )
     },{}))
     console.log('chrs: ', chrs)
-    const costTotRows = chrs.map((c,i)=>{
-      console.log('c: ', c)
-      const bcc = bca.filter((f)=>f.cat==c.cat)[0]
-      const tt = cd(bcc.labor, bcc.hrs, c.sumHrs )
-      console.log('tt: ', tt)
-      return(
-        <tr key={i+1}>
-          <td align="left">{c.cat}</td>
-          <td></td>
-          <td></td>
-          {/* <td>{calcPM(i+1)}</td>
-          <td>
-            <input type="text" size="1" value={percArr[i+1]} onChange={changePC(i+1)}/>
-          </td> */}
-          <td align="right"><b>{tt.per}%</b></td>
-          <td align="right"><b>${tt.derlab}</b></td>
-          <td align="right">{c.sumHrs.toFixed()}</td>
-        </tr>        
-      )
-    })
     
+      const costTotRows = chrs.map((c,i)=>{
+        if(chrs.length>1){
+          console.log('c: ', c)
+          const bcc = bca.filter((f)=>f.cat==c.cat)[0]
+          console.log('bcc: ', bcc)
+          let tt = {per:0, derlab:0}
+          if(bcc){
+            tt = cd(bcc.labor, bcc.hrs, c.sumHrs )
+          }
+          console.log('tt: ', tt)
+          return(
+            <tr key={i+1}>
+              <td align="left">{c.cat}</td>
+              <td></td>
+              <td></td>
+              {/* <td>{calcPM(i+1)}</td>
+              <td>
+                <input type="text" size="1" value={percArr[i+1]} onChange={changePC(i+1)}/>
+              </td> */}
+              <td align="right"><b>{tt.per}%</b></td>
+              <td align="right"><b>${tt.derlab}</b></td>
+              <td align="right">{c.sumHrs.toFixed()}</td>
+            </tr>        
+          )
+        }
+      })
+   
     return(
       <div>
         <div style={style.wbord}>

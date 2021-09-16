@@ -43,7 +43,7 @@ export default function JobCost (){
   const search=(e)=>{
     const sel = e.target.value.toLowerCase()
     setSearchStr(sel)
-    if(sel.length>1){
+    if(sel.length>0){
       const foundJobs = allJobs.filter((j)=>{
         return j.job.toLowerCase().includes(sel)
       }) 
