@@ -15,7 +15,7 @@ export default function Jobs (){
   const renderJobs=()=>{
     const jobs = foundJobs.map((j,i)=>{
       return (
-        <li key={j}>
+        <li key={i}>
           <span> {j.job} </span>
           <span> {j.category} </span>
         </li>

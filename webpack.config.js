@@ -40,7 +40,15 @@ module.exports = env =>{
         {
           test: /\.(png|jpg|svg)$/,
           loader: 'url-loader'
-        }      
+        },
+        {
+          test: /\.(txt|base64)$/i,
+          use: [
+            {
+              loader: 'raw-loader',
+            },
+          ],
+        },       
       ],
     },
     optimization: {

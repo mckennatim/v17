@@ -51,7 +51,15 @@ module.exports=env=>{
               }
             }
           ]
-        }
+        },
+        {
+          test: /\.(txt|base64)$/i,
+          use: [
+            {
+              loader: 'raw-loader',
+            },
+          ],
+        }, 
       ],
     },
     optimization: {
